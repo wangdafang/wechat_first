@@ -1,0 +1,10 @@
+/* pages/index/click/click.wxss */
+
+.message {
+  margin-top: 20px;
+}
+
+.button {
+  margin-top: 20px;
+  background-color: greenyellow;
+}

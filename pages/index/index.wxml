@@ -1,10 +1,25 @@
 <!--index.wxml-->
 <view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
+  <!--<view  bindtap="bindViewTap" class="userinfo">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>-->
+  <view class="showLittle" bindtouchstart="bindShowLittle">
+    <button class="show-Little">{{showLittle}}</button>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+
+  <view class="showSwiper"  bindtouchstart="bindSwiperOnClick">
+    <button class="show-Swiper">{{showSwiper}}</button>
+  </view>
+
+  <view class="showClick"  bindtouchstart="bindClickOnClick">
+    <button class="show-Click">{{showClick}}</button>
+  </view>
+
+  <view class="usermotto" bindtouchstart="bindOnClick">
+    <button class="user-motto">{{motto}}</button>
+  </view>
+  <view class="showMessage" hidden="{{hidden}}">
+    <button class="showMessage" id="showMessage">{{showMsg}}</button>
   </view>
 </view>

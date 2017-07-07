@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="message">{{message1}}</view>
+  <view class="message">{{message2}}</view>
+
+
+  <view class="button">
+    <button id="button1" type="default" bindtap="onClick">{{button1}}</button>
+  </view>
+  <view class="button">
+    <button id="button2" type="default" bindtap="onClick">{{button2}}</button>
+  </view>
+
+</view>
+ 
+  

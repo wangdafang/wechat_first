@@ -1,0 +1,12 @@
+<swiper class="view-item" indicator-dots="true" autoplay="true">
+
+<swiper-item class="bg-green">
+<view >page1</view>
+</swiper-item>
+<swiper-item class="bg-yellow">
+<view >page2</view>
+</swiper-item>
+<swiper-item class="bg-blue">
+<view >page3</view>
+</swiper-item>
+</swiper>

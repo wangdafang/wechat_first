@@ -1,0 +1,7 @@
+ <view  style="display:inline-block">
+   <block  wx:for="{{iconType}}" wx:for-item="i">
+   <block  wx:for="{{iconColor}}"wx:for-item="j">
+   <icon type="{{i}}" size="50"color="{{j}}"></icon>
+   </block>
+   </block>
+   </view>
