@@ -1,0 +1,13 @@
+/* pages/index/select/select.wxss */
+.view{
+  width: 50%;
+  height: 20%;
+}
+
+.view1{
+  
+}
+
+.view2{
+
+}

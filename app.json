@@ -2,9 +2,12 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
+    "pages/index/move/move",
     "pages/index/lite/lite",
     "pages/index/swiper/swiper",
-    "pages/index/click/click"
+    "pages/index/click/click",
+    "pages/index/socket/socket",
+    "pages/index/select/select"
   ],
   "window":{
     "backgroundTextStyle":"light",

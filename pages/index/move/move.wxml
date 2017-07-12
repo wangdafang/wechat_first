@@ -1,0 +1,24 @@
+<view class="body">
+  <view class="stage-class">
+    <view >当前左侧鼠标的位置是({{posX}},{{posY}})</view>
+    <view ></view>
+    <view >当前左侧控制区的圆心位置：({{posLeftConsoleCenterX}},{{posLeftConsoleCenterY}})</view>
+    <view> </view>
+    <view >当前右侧控制区的圆心位置：({{posRightConsoleCenterX}},{{posRightConsoleCenterY}})</view>
+    <view> </view>
+    <image style="width:50px;height:50px;left:{{posX}}px;top:{{posY}}px;position: absolute;" src="/pages/img/center.jpg"/> 
+  </view>
+
+  <view>
+      <view id="leftConsole" class="console-class console-class-left" bindtouchmove="bindTouchMove">
+     
+      </view>
+
+      <view id="rightConsole" class="console-class console-class-right">
+        
+      </view>
+
+  </view>
+  
+
+</view>

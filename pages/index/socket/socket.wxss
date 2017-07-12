@@ -1,0 +1,11 @@
+/* pages/index/socket/socket.wxss */
+.message{
+  width: 70%;
+  height: 60%;
+  /*margin-left: 15%;*/
+  background-color: greenyellow;
+}
+
+.consoleArea{
+  margin-top: 20%;
+}

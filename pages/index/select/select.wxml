@@ -1,0 +1,13 @@
+<view class="container">
+
+  <view id="viewId1" class="view view1">{{view1}}</view>
+
+  <view id="viewId2" class="view view2">{{view2}}</view>
+
+  <view class="buttonClass" bindtouchstart="bindSelectOnClick">
+    <button>{{buttonName}}</button>
+  </view>
+
+
+
+</view>

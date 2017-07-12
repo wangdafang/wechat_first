@@ -8,6 +8,9 @@ Page({
     showClick: 'showClick',
     motto: 'showOnClick',
     showMsg: 'nothing',
+    showMove: 'showMove',
+    showSocket:'showSocket',
+    showSelect:'showSelect',
     hidden: true,
     userInfo: {}
   },
@@ -55,6 +58,22 @@ Page({
   bindClickOnClick: function (e) {
     wx.navigateTo({
       url: '/pages/index/click/click'
+    })
+  },
+
+  bindMoveOnClick: function (e) {
+    wx.navigateTo({
+      url: '/pages/index/move/move'
+    })
+  },
+  bindShowSocket: function (e) {
+    wx.navigateTo({
+      url: '/pages/index/socket/socket'
+    })
+  },
+  bindShowSelect: function (e) {
+    wx.navigateTo({
+      url: '/pages/index/select/select'
     })
   }
 

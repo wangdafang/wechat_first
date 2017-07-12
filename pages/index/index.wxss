@@ -36,3 +36,16 @@
 .showClick {
   margin-top: 20px;
 }
+
+.showMove {
+  margin-top: 20px;
+}
+
+.showSocket {
+  margin-top: 20px;
+}
+
+
+.showSelect {
+  margin-top: 20px;
+}

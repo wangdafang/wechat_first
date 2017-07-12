@@ -4,6 +4,15 @@
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </view>-->
+
+  <view class="showSelect" bindtouchstart="bindShowSelect">
+    <button class="show-Select">{{showSelect}}</button>
+  </view>
+
+  <view class="showSocket" bindtouchstart="bindShowSocket">
+    <button class="show-Socket">{{showSocket}}</button>
+  </view>
+
   <view class="showLittle" bindtouchstart="bindShowLittle">
     <button class="show-Little">{{showLittle}}</button>
   </view>
@@ -14,6 +23,10 @@
 
   <view class="showClick"  bindtouchstart="bindClickOnClick">
     <button class="show-Click">{{showClick}}</button>
+  </view>
+
+  <view class="showMove"  bindtouchstart="bindMoveOnClick">
+    <button class="show-Move">{{showMove}}</button>
   </view>
 
   <view class="usermotto" bindtouchstart="bindOnClick">

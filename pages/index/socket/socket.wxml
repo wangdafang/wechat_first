@@ -1,0 +1,14 @@
+<view class="container">
+
+  <view class="message">
+  123
+  </view>
+
+  <view class="consoleArea" bindtouchstart="bindConsoleOnClick">
+    <button>{{consoleButton}}</button>
+  </view>
+
+
+
+
+</view>
