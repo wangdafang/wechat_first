@@ -10,8 +10,8 @@
   </view>
 
   <view>
-      <view id="leftConsole" class="console-class console-class-left" bindtouchmove="bindTouchMove">
-     
+      <!-- <view id="leftConsole" class="console-class console-class-left" bindtouchmove="bindTouchMove"> -->
+     <view id="leftConsole" class="console-class console-class-left" bindtouchend="bindTouchEnd" bindtouchstart="bindTouchStart" bindtouchmove="bindTouchMove">
       </view>
 
       <view id="rightConsole" class="console-class console-class-right">

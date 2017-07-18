@@ -1,3 +1,10 @@
+var screenLeftBorder=0;//屏幕左边界
+var screenRightBorder=0;//屏幕右边界
+var screenTopBorder=0;//屏幕上边界
+var screenBottomBorder=0;//屏幕下边界
+
+var startMove = false;
+
 var param = {
 
   /**
@@ -11,11 +18,7 @@ var param = {
     posRightConsoleCenterX: 0,//右侧控制区圆心X坐标
     posRightConsoleCenterY: 0,//右侧控制区圆心Y坐标
     imageWidth: 50,//人物大小-宽度
-    imageHeight: 50,//人物大小-高度
-    screenLeftBorder : 0,//屏幕左边界
-    screenRightBorder:0,//屏幕右边界
-    screenTopBorder:0,//屏幕上边界
-    screenBottomBorder:0//屏幕下边界
+    imageHeight: 50//人物大小-高度
   },
 
   /**
@@ -38,8 +41,8 @@ var param = {
     //
     //获取屏幕边界
     wx.createSelectorQuery().select('.body').boundingClientRect(function (rect) {
-      param.data.screenRightBorder = rect.width;
-      param.data.screenBottomBorder = rect.height;
+      screenRightBorder = rect.width;
+      screenBottomBorder = rect.height;
     }).exec();
     this.setData(param.data);
   },
@@ -49,9 +52,42 @@ var param = {
    * 负责计算滑动坐标举例圆心的方向距离，来计算人物跑动的距离和加速度
    */
   bindTouchMove: function (e) {
-    var paramReturn = checkBorderImpact(e.touches[0].clientX, e.touches[0].clientY - 300);
-    console.log(Math.sin(Math.PI/6));
-    this.setData(paramReturn.data);
+    while (startMove){
+      var touchesX = e.touches[0].clientX;
+      var touchesY = e.touches[0].clientY;
+      //计算触碰位置距离左侧控制区的角度
+      var deviation = angleCalculation(touchesX, touchesY, param.data.posLeftConsoleCenterX, param.data.posLeftConsoleCenterY);
+
+      var displacementX = checkDirection(touchesX, param.data.posLeftConsoleCenterX);
+      var displacementY = checkDirection(touchesY, param.data.posLeftConsoleCenterY);
+
+      var x_pos = param.data.posX + displacementX * 1;
+      var y_pos = param.data.posY + displacementY * deviation;
+
+      var borderCheckPos = checkBorderImpact(x_pos, y_pos);
+
+      param.data.posX = borderCheckPos.posX;
+      param.data.posY = borderCheckPos.posY;
+      this.setData(param.data);
+    }
+  },
+
+  /**
+   * 点击事件开始：即手指点击屏幕的瞬间触发
+   * 设置startMove为true
+   */
+  bindTouchStart:function(e){
+    console.log('点击事件开始');
+    startMove = true;
+  },
+
+  /**
+  * 点击事件结束：即手指离开屏幕
+  *  设置startMove为false
+  */
+  bindTouchEnd: function (e) {
+    console.log('点击事件结束');
+    startMove = false;
   },
 
   /**
@@ -105,28 +141,41 @@ var param = {
 }
 
 /**
+ * 方向选择
+ * 传入两个值，如果前者大则返回1，如果后者大则返回-1，如果相等则返回0
+ */
+function checkDirection(firstNum,secondNum){
+  if (firstNum > secondNum){
+    return 1;
+  } else if (firstNum < secondNum){
+    return -1;
+  } else {
+    return 0;
+  }
+}
+
+/**
  * 边界碰撞检测
  */
 function checkBorderImpact(posX,posY){
-  if (posX < param.data.screenLeftBorder){
+  if (posX < screenLeftBorder){
     //碰撞屏幕左边界
-    posX = param.data.screenLeftBorder + 1;
-  } else if (posX > param.data.screenRightBorder){
+    posX = screenLeftBorder + 1;
+  } else if (posX > screenRightBorder){
     //碰撞屏幕右边界
-    posX = param.data.screenRightBorder - 1;
+    posX = screenRightBorder - 1;
   }
 
-  if (posY < param.data.screenTopBorder){
+  if (posY < screenTopBorder){
     //碰撞屏幕上边界
-    posY = param.data.screenTopBorder + 1;
-  } else if (posY > param.data.screenBottomBorder){
+    posY = screenTopBorder + 1;
+  } else if (posY > screenBottomBorder){
     //碰撞屏幕下边界
-    posY = param.data.screenBottomBorder - 1;
+    posY = screenBottomBorder - 1;
   }
-  param.data.posX = posX;
-  param.data.posY = posY;
-  return param;
+  return {posX,posY};
 }
+
 
 /**
  * 触碰点距离左侧控制区圆心的角度计算
@@ -134,8 +183,11 @@ function checkBorderImpact(posX,posY){
  * 计算方法：计算触摸点与左侧控制区的圆心之间的角度tan值
  */
 function angleCalculation(touchesX, touchesY, posLeftConsoleCenterX, posLeftConsoleCenterY){
-  return (touchesX - posLeftConsoleCenterX) / (touchesY - posLeftConsoleCenterY);
-  //TODO 此处需要主要方向，因为一三象限得出的值均为正，所以可能会造成方向混乱，参考方式：可以选择取绝对值，将方向正负号保留，算出来最后步进长度之后，再加上符号
+  var deviation = Math.abs((touchesX - posLeftConsoleCenterX) / (touchesY - posLeftConsoleCenterY))
+  if (deviation>0.1){
+    deviation = 0.1;
+  }
+  return deviation;
 }
 
 /**
